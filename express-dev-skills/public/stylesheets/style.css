@@ -1,0 +1,72 @@
+body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: rgb(255, 219, 162);
+  justify-content: center;
+}
+
+.add-save {
+  text-align: center;
+}
+
+#add-skill {
+  text-align: center;
+  font-size: 3rem;
+  padding-bottom: 2rem;
+}
+
+
+#skills {
+  display: flex;
+  align-content: center;
+}
+
+#skills > h1 {
+  text-align: center;
+  font-size: 4rem;
+}
+
+.skill-list {
+  padding-top: 2rem;
+  font-size: 1rem;
+}
+
+#add-btn {
+  text-align: center;
+  font-size: 25px;
+}
+
+#skills-redirect {
+  text-align: center;
+  font-size: xx-large;
+}
+
+#main-title {
+  text-align: center;
+  padding-top: 4rem;
+  font-size: 5rem;
+}
+
+.del-skill {
+  text-align: center;
+}
+
+.show-skill {
+  text-align: center;
+  font-size: xx-large;
+}
+
+.edit-link {
+  text-align: center;
+  padding-top: 1rem;
+}
+
+.edit-page {
+  text-align: center;
+}
