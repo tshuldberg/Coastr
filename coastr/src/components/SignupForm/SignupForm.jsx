@@ -18,16 +18,23 @@ class SignupForm extends Component {
   };
 
   handleSubmit = async (e) => {
+    console.log("HandleSub Fired------------------------------");
     e.preventDefault();
     try {
+      console.log(this.state);
       await userService.signup(this.state);
+      console.log("HandleSub Fired1------------------------------");
+
       console.log(this.state);
       // Let <App> know a user has signed up
       this.props.handleSignupOrLogin();
       // Sucessfully signed up - show Page
       this.props.history.push("/");
+      console.log(this.props.history);
     } catch (err) {
       // Invalid user data (probably duplicate email)
+      console.log("HandleSub Fired2------------------------------");
+
       console.log(err);
       this.props.updateMessage(err.message);
     }

@@ -25,7 +25,6 @@ async function signup(req, res) {
 }
 
 async function login(req, res) {
-  if (User.findOne({ email: req.body.email })) console.log("true");
   try {
     const user = await User.findOne({ email: req.body.email });
     if (!user) return res.status(401).json({ err: "bad credentials" });

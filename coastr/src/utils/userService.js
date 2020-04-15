@@ -3,7 +3,7 @@ import tokenService from "./tokenService";
 const BASE_URL = "/api/users/";
 
 function signup(user) {
-  console.log(`this is user pass to sign up = ${user}`);
+  console.log(`this is user pass to sign up = ${user.email}`);
   return fetch(BASE_URL + "signup", {
     method: "POST",
     headers: new Headers({ "Content-Type": "application/json" }),
@@ -16,9 +16,7 @@ function signup(user) {
       console.log(res);
       throw new Error("Email already taken!");
     })
-    .then(({ token }) => {
-      tokenService.setToken(token);
-    });
+    .then(({ token }) => tokenService.setToken(token));
 }
 
 function getUser() {
