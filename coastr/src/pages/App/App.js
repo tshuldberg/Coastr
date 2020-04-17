@@ -9,6 +9,7 @@ import LoginPage from "../LoginPage/LoginPage";
 import CreateDrinkPage from "../../pages/CreateDrinkPage/CreateDrinkPage";
 import QueuePage from "../../pages/QueuePage/QueuePage";
 import "bootstrap/dist/css/bootstrap.min.css";
+import drinkService from "../../utils/drinkService";
 import { isTemplateExpression } from "typescript";
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
       selectedCocktail: "",
       queue: [],
       selectedCreateOption: "",
+      drinks: [],
       createdDrink: [],
       cocktails: [
         {
@@ -260,6 +262,28 @@ class App extends Component {
       return {
         queue,
       };
+    });
+  };
+
+  handleAddDrink = async (drinkIngredients) => {
+    console.log(`DRINK WILL BE ${drinkIngredients}`);
+    const newDrink = await drinkService.create(drinkIngredients);
+    this.setState((state) => ({
+      drinks: [...state.drinks, newDrink],
+    }));
+  };
+
+  handleDeleteDrink = async (id) => {
+    await drinkService.delete(id);
+    this.setState((state) => ({
+      drinks: state.drinks.filter((d) => d._id !== id),
+    }));
+  };
+
+  componentDidMount = async () => {
+    const drinks = await drinkService.getAll();
+    this.setState({
+      drinks: drinks,
     });
   };
 
