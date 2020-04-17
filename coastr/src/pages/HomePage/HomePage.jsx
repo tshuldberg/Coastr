@@ -11,7 +11,7 @@ const HomePage = (props) => {
     <div className="HomePage">
       <NavBar user={props.user} handleLogout={props.handleLogout} />
       <CreateDrink props={props} />
-      <Queue />
+      <Queue props={props} />
     </div>
   );
 };
