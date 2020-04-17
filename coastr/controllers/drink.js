@@ -1,42 +1,21 @@
-const User = require("../models/user");
 const Drink = require("../models/drink");
-const request = require("request");
 
 module.exports = {
-  new: newdrink,
-  showAll,
-  update,
-  delete: deldrink,
+  index,
+  create,
+  delete: deleteDrink,
 };
 
-function showAll(req, res) {
-  Drink.find({});
-  res.render("drinks/show", { title: "My drinks", user });
+async function create(req, res) {
+  const drink = await Drink.create(req.body);
+  res.status(201).jason(drink);
+}
+async function index(req, res) {
+  const drinks = await Drink.find({});
+  res.status(200).json(drinks);
 }
 
-function update(req, res) {
-  drink.findByIdAndUpdate(
-    req.params.drinkId,
-    req.body,
-    { new: true },
-    function (err, drink) {
-      if (err) console.log("WHY DID YOU BREAK", err);
-      res.redirect(`/users/${req.params.id}/drinks`);
-    }
-  );
+async function deleteDrink(req, res) {
+  const deletedDrink = await Drink.findByIdAndRemove(req.params.id);
+  res.status(200).json(deletedDrink);
 }
-
-function newdrink(req, res) {
-  User.findById(req.params.id, function (err, user) {
-    request(options, function (err, response, body) {
-      const countries = JSON.parse(body);
-      res.render("drinks/new", {
-        title: "Create A New drink",
-        user,
-        countries,
-      });
-    });
-  });
-}
-
-function deldrink(req, res, next) {}

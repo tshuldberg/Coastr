@@ -229,6 +229,13 @@ class App extends Component {
     };
   }
 
+  handleChange = (e) => {
+    this.props.updateMessage("");
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+
   handleNewDrinkClick = () => {};
 
   handleQueueClick = () => {};

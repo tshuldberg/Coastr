@@ -3,7 +3,12 @@ const Schema = mongoose.Schema;
 
 const drinkSchema = new Schema({
   title: String,
-  ingredients: [String],
+  ingredients: [
+    {
+      name: String,
+      quantity: String,
+    },
+  ],
 });
 
 module.exports = mongoose.model("Drink", drinkSchema);
