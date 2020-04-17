@@ -8,7 +8,10 @@ module.exports = {
 
 async function create(req, res) {
   const drink = await Drink.create(req.body);
-  res.status(201).jason(drink);
+  drink.save((err) => {
+    if (err) console.log(err);
+  });
+  res.status(201).json(drink);
 }
 async function index(req, res) {
   const drinks = await Drink.find({});

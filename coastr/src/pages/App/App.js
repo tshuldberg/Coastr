@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import { Route, Switch, Redirect, Link } from "react-router-dom";
 import userService from "../../utils/userService";
+import drinkService from "../../utils/drinkService";
+
 // import tokenService from "../../utils/tokenService";
 import HomePage from "../../pages/HomePage/HomePage";
 import SignupPage from "../SignupPage/SignupPage";
@@ -9,8 +11,6 @@ import LoginPage from "../LoginPage/LoginPage";
 import CreateDrinkPage from "../../pages/CreateDrinkPage/CreateDrinkPage";
 import QueuePage from "../../pages/QueuePage/QueuePage";
 import "bootstrap/dist/css/bootstrap.min.css";
-import drinkService from "../../utils/drinkService";
-import { isTemplateExpression } from "typescript";
 
 class App extends Component {
   constructor() {
@@ -268,6 +268,7 @@ class App extends Component {
   handleAddDrink = async (drinkIngredients) => {
     console.log(`DRINK WILL BE ${drinkIngredients}`);
     const newDrink = await drinkService.create(drinkIngredients);
+    console.log("NEW DRINK ", newDrink);
     this.setState((state) => ({
       drinks: [...state.drinks, newDrink],
     }));
@@ -301,7 +302,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           {" "}
-          <Link to="" className="NavBar-link">
+          <Link to="" className="Coastr-link">
             Coastr
           </Link>
         </header>
@@ -332,13 +333,26 @@ class App extends Component {
                 handleCocktailSelect={this.handleCocktailSelect}
                 handleCreateSelect={this.handleCreateSelect}
                 handleAddToQueue={this.handleAddToQueue}
+                handleNewDrinkClick={this.handleNewDrinkClick}
+                handleAddDrink={this.handleAddDrink}
+                handleLogout={this.handleLogout}
+                user={this.state.user}
               />
             )}
           />
           <Route
             exact
             path="/queue"
-            render={() => <QueuePage queue={this.state.queue} />}
+            render={() => (
+              <QueuePage
+                queue={this.state.queue}
+                drinks={this.state.drinks}
+                handleDeleteDrink={this.handleDeleteDrink}
+                handleNewDrinkClick={this.handleNewDrinkClick}
+                handleLogout={this.handleLogout}
+                user={this.state.user}
+              />
+            )}
           />
 
           <Route

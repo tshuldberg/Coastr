@@ -7,7 +7,7 @@ const QueueItem = (props) => (
     <div>
       <Button
         variant="outline-warning"
-        //   onClick={() => props.handleRemoveFromQueue(props.selectedCocktail)}
+        onClick={() => props.handleDeleteDrink(props.item._id)}
       >
         Remove From Queue
       </Button>{" "}

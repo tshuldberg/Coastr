@@ -4,8 +4,8 @@ import QueueItem from "../QueueItem/QueueItem";
 const QueueList = (props) => {
   return (
     <div className="QueueList">
-      {props.queue.map((item) => (
-        <QueueItem item={item} />
+      {props.drinks.map((item) => (
+        <QueueItem item={item} handleDeleteDrink={props.handleDeleteDrink} />
       ))}
     </div>
   );

@@ -13,6 +13,7 @@ function getAll() {
 }
 
 function create(drink) {
+  console.log(drink);
   return fetch(BASE_URL, {
     method: "POST",
     headers: {

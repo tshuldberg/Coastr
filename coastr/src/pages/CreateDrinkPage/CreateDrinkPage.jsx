@@ -6,8 +6,25 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
 
 const CreateDrinkPage = (props) => {
+  let toAdd = props.selectedCocktail[0] ? (
+    <Button
+      variant="outline-warning"
+      onClick={() => props.handleAddDrink(props.selectedCocktail)}
+    >
+      Pour That Shit Bartender
+    </Button>
+  ) : (
+    <Button
+      variant="outline-warning"
+      onClick={() => props.handleAddDrink(props.createdDrink)}
+    >
+      Pour That Shit Bartender
+    </Button>
+  );
   return (
     <div>
+      <NavBar user={props.user} handleLogout={props.handleLogout} />
+
       <div>
         <Dropdown>
           <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -86,14 +103,7 @@ const CreateDrinkPage = (props) => {
         </div>
         <div>{props.selectedCocktail}</div>
       </div>
-      <div>
-        <Button
-          variant="outline-warning"
-          onClick={() => props.handleAddToQueue(props.selectedCocktail)}
-        >
-          Pour That Shit Bartender
-        </Button>{" "}
-      </div>
+      <div>{toAdd}</div>
     </div>
   );
 };
