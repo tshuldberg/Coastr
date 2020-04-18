@@ -13,7 +13,7 @@ function getAll() {
 }
 
 function create(drink) {
-  console.log(drink);
+  console.log("Adding Drink TO DB", drink);
   return fetch(BASE_URL, {
     method: "POST",
     headers: {

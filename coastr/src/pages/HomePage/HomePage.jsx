@@ -10,8 +10,7 @@ const HomePage = (props) => {
   return (
     <div className="HomePage">
       <NavBar user={props.user} handleLogout={props.handleLogout} />
-      <CreateDrink props={props} />
-      <Queue props={props} />
+      HOME PAGE
     </div>
   );
 };

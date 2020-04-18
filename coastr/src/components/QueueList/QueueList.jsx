@@ -1,11 +1,13 @@
 import React from "react";
 import QueueItem from "../QueueItem/QueueItem";
+import "./QueueList.css";
 
 const QueueList = (props) => {
   return (
     <div className="QueueList">
-      {props.drinks.map((item) => (
-        <QueueItem item={item} handleDeleteDrink={props.handleDeleteDrink} />
+      <h1>Drink Queue</h1>
+      {props.drinks.map((drink) => (
+        <QueueItem drink={drink} handleDeleteDrink={props.handleDeleteDrink} />
       ))}
     </div>
   );
