@@ -25,6 +25,7 @@ class App extends Component {
         mixerquantity: "",
         liqueur: "",
         liqueurquantity: "",
+        user: "",
       },
       selectedCocktail: [],
       queue: [],
@@ -280,6 +281,7 @@ class App extends Component {
 
   handleAddDrink = async (drinkIngredients) => {
     console.log(`DRINK WILL BE ${drinkIngredients}`);
+    drinkIngredients.user = userService.getUser();
     const newDrink = await drinkService.create(drinkIngredients);
     this.setState((state) => ({
       drinks: [...state.drinks, newDrink],
@@ -322,21 +324,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          {" "}
-          <Link to="" className="Coastr-link">
-            Coastr
-          </Link>
-          <nav>
-            <NavLink exact to="/queue">
-              {" "}
-              Drink Queue
-            </NavLink>
-            <NavLink exact to="/drink">
-              Add Drink
-            </NavLink>
-          </nav>
-        </header>
         <Switch>
           <Route
             exact

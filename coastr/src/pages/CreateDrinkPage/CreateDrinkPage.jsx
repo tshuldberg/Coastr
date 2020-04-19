@@ -45,8 +45,8 @@ const CreateDrinkPage = (props) => {
       <NavBar user={props.user} handleLogout={props.handleLogout} />
 
       <div>
-        <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
+        <Dropdown className="cocktail-dropdown">
+          <Dropdown.Toggle variant="outline-warning" id="dropdown-basic">
             Cocktail List
           </Dropdown.Toggle>
 
@@ -64,11 +64,11 @@ const CreateDrinkPage = (props) => {
         </Dropdown>{" "}
       </div>
 
-      <h1>Make Your Own</h1>
+      <h1 className="make-drink">Make Your Own</h1>
       <form autoComplete="off" onSubmit={props.handleSubmit}>
         <div>
-          <Dropdown>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
+          <Dropdown className="spirits-dropdown">
+            <Dropdown.Toggle variant="outline-warning" id="dropdown-basic">
               Spirits
             </Dropdown.Toggle>
 
@@ -85,10 +85,10 @@ const CreateDrinkPage = (props) => {
               ))}
             </Dropdown.Menu>
           </Dropdown>{" "}
-          <div className="form-group">
+          <div className="quantity-input">
             <label>Quantity</label>
             <input
-              className="form-control"
+              className="spirits-quantity"
               name="spiritquantity"
               value={props.drinkInfo.spiritquantity}
               onChange={props.handleChange}
@@ -96,8 +96,8 @@ const CreateDrinkPage = (props) => {
           </div>
         </div>
         <div>
-          <Dropdown>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
+          <Dropdown className="mixers-dropdown">
+            <Dropdown.Toggle variant="outline-warning" id="dropdown-basic">
               Mixers
             </Dropdown.Toggle>
 
@@ -114,10 +114,10 @@ const CreateDrinkPage = (props) => {
               ))}
             </Dropdown.Menu>
           </Dropdown>{" "}
-          <div className="form-group">
-            <label>quantity</label>
+          <div className="quantity-input">
+            <label>Quantity</label>
             <input
-              className="form-control"
+              className="mixers-quantity"
               name="mixerquantity"
               value={props.drinkInfo.mixerquantity}
               onChange={props.handleChange}
@@ -125,8 +125,8 @@ const CreateDrinkPage = (props) => {
           </div>
         </div>
         <div>
-          <Dropdown>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
+          <Dropdown className="liqueurs-dropdown">
+            <Dropdown.Toggle variant="outline-warning" id="dropdown-basic">
               Liqueurs
             </Dropdown.Toggle>
 
@@ -143,25 +143,18 @@ const CreateDrinkPage = (props) => {
               ))}
             </Dropdown.Menu>
           </Dropdown>{" "}
-          <div className="form-group">
-            <label>quantity</label>
+          <div className="quantity-input">
+            <label>Quantity</label>
             <input
-              className="form-control"
+              className="liqueurs-quantity"
               name="liqueurquantity"
               value={props.drinkInfo.liqueurquantity}
               onChange={props.handleChange}
             />
+            <input type="hidden" name="user" value={props.user.name} />
           </div>
         </div>
-        <div>
-          YOUR CURRENT DRINK
-          <div>
-            {props.createdDrink.map((item) => (
-              <p>{item}</p>
-            ))}
-          </div>
-          <div>{props.selectedCocktail}</div>
-        </div>
+
         <div>{toAdd}</div>
       </form>
     </div>

@@ -11,6 +11,7 @@ const QueuePage = (props) => (
         queue={props.queue}
         drinks={props.drinks}
         handleDeleteDrink={props.handleDeleteDrink}
+        user={props.user}
       />
     </div>
   </div>

@@ -1,3 +1,5 @@
-.QueueList {
-  margin-top: 50px;
+.drink-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
