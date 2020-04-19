@@ -3,3 +3,9 @@
   flex-direction: column;
   flex-wrap: wrap;
 }
+.list-title {
+  color: whitesmoke;
+}
+.queue-title {
+  color: rgb(216, 216, 216);
+}

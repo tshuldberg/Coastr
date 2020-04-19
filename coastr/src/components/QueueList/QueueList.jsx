@@ -7,7 +7,7 @@ const QueueList = (props) => {
   console.log(tempUser);
   return (
     <div className="QueueList">
-      <h1>Drink Queue</h1>
+      <h1 className="queue-title">Drink Queue</h1>
       <div className="drink-list">
         {props.drinks.map((drink) => (
           <QueueItem

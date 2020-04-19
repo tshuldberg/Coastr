@@ -1,5 +1,8 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+
 import "./NavBar.css";
 
 const NavBar = (props) => {
@@ -15,34 +18,38 @@ const NavBar = (props) => {
           >
             C
           </Link>
-          <Link
-            style={{ textDecoration: "none" }}
-            to=""
-            className="NavBar-link"
-            onClick={props.handleLogout}
-          >
-            Log Out
-          </Link>
-          <NavLink
-            className="NavBar-link"
-            style={{ textDecoration: "none" }}
-            exact
-            to="/queue"
-          >
-            {" "}
-            View Queue
-          </NavLink>
-          <NavLink
-            className="NavBar-link"
-            style={{ textDecoration: "none" }}
-            exact
-            to="/drink"
-          >
-            Add Drink
-          </NavLink>
+          <div className="topnav-right">
+            <Link
+              style={{ textDecoration: "none" }}
+              to=""
+              className="NavBar-link"
+              onClick={props.handleLogout}
+            >
+              Log Out
+            </Link>
+            &nbsp;&nbsp;&nbsp;
+            <NavLink
+              className="NavBar-link"
+              style={{ textDecoration: "none" }}
+              exact
+              to="/queue"
+            >
+              {" "}
+              View Queue
+            </NavLink>
+            &nbsp;&nbsp;&nbsp;
+            <NavLink
+              className="NavBar-link"
+              style={{ textDecoration: "none" }}
+              exact
+              to="/drink"
+            >
+              Add Drink
+            </NavLink>
+          </div>
         </header>
-        |&nbsp;&nbsp;&nbsp;
-        <span className="NavBar-welcome">WELCOME, {props.user.name}</span>
+        &nbsp;&nbsp;&nbsp;
+        <span className="NavBar-welcome">Time To Drink, {props.user.name}</span>
       </div>
     ) : (
       <div>

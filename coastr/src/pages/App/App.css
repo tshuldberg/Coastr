@@ -12,11 +12,13 @@
 }
 
 .Coastr-link {
-  color: rgb(255, 174, 23);
+  color: rgb(255, 189, 65);
   text-decoration: none;
   float: left;
+  margin-top: 5px;
+  margin-left: 5px;
   font-size: smaller;
-  border: 3px solid orange;
+  border: 3px solid rgb(255, 189, 65);
   border-radius: 15%;
   padding-left: 0.5rem;
   padding-right: 0.5rem;

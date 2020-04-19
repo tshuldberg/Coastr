@@ -6,24 +6,24 @@ body {
 .container {
   flex-shrink: 0;
   flex-grow: 0;
-  background-color: rgba(205, 205, 205, 0.8);
+  background-color: rgba(205, 205, 205, 0.7);
   padding: 2rem;
   color: black;
-  font-size: 3rem;
+  font-size: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
 }
 
 .home-ctr {
-  margin-bottom: auto;
+  display: flex;
+  margin-left: 30rem;
+  margin-right: 30rem;
   flex-shrink: 0;
   flex-grow: 0;
 }
 
-.HomePage {
-  display: flex;
-  flex-shrink: 1 0 auto;
-  flex-grow: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.topnav-right {
+  float: right;
+  margin-right: 2rem;
 }

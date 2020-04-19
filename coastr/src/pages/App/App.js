@@ -314,7 +314,7 @@ class App extends Component {
 
   handleLogout = () => {
     userService.logout();
-    this.ListeningStateChangedEvent({ user: null });
+    this.setState({ user: null });
   };
 
   handleSignupOrLogin = () => {
@@ -332,7 +332,9 @@ class App extends Component {
               <HomePage
                 handleNewDrinkClick={this.handleNewDrinkClick}
                 handleLogout={this.handleLogout}
+                drinks={this.state.drinks}
                 user={this.state.user}
+                handleDeleteDrink={this.handleDeleteDrink}
               />
             )}
           />

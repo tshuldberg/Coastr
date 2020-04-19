@@ -1,7 +1,7 @@
 .drink-item {
   flex-shrink: 0;
   flex-grow: 0;
-  background-color: rgba(205, 205, 205, 0.8);
+  background-color: rgba(205, 205, 205, 0.7);
   padding: 2rem;
   color: black;
   border-radius: 5%;
