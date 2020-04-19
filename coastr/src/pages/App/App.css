@@ -3,13 +3,21 @@
 }
 
 .App-header {
-  background-color: #222;
-  height: 50px;
+  background-color: rgba(205, 205, 205, 0.95);
+  height: 6rem;
   padding: 0px;
   font-size: 40px;
   text-align: center;
+  text-decoration: none;
 }
 
 .Coastr-link {
-  color: orange;
+  color: rgb(255, 174, 23);
+  text-decoration: none;
+  float: left;
+  font-size: smaller;
+  border: 3px solid orange;
+  border-radius: 15%;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }

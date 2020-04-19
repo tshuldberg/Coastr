@@ -3,13 +3,14 @@ const Schema = mongoose.Schema;
 
 const drinkSchema = new Schema(
   {
-    title: String,
-    ingredients: [
-      {
-        name: String,
-        quantity: String,
-      },
-    ],
+    cocktail: String,
+    spirit: String,
+    spiritquantity: String,
+    mixer: String,
+    mixerquantity: String,
+    liqueur: String,
+    liqueurquantity: String,
+    user: [{ type: Schema.Types.ObjectId, ref: "User" }],
   },
   { timestamp: true }
 );

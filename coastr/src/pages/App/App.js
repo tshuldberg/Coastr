@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Route, Switch, Redirect, Link } from "react-router-dom";
+import { Route, Switch, NavLink, Link } from "react-router-dom";
 import userService from "../../utils/userService";
 import drinkService from "../../utils/drinkService";
 
@@ -17,7 +17,17 @@ class App extends Component {
     super();
     this.state = {
       user: userService.getUser(),
-      selectedCocktail: "",
+      drinkInfo: {
+        cocktail: "",
+        spirit: "",
+        spiritquantity: "",
+        mixer: "",
+        mixerquantity: "",
+        liqueur: "",
+        liqueurquantity: "",
+        user: "",
+      },
+      selectedCocktail: [],
       queue: [],
       selectedCreateOption: "",
       drinks: [],
@@ -232,9 +242,12 @@ class App extends Component {
   }
 
   handleChange = (e) => {
-    this.props.updateMessage("");
-    this.setState({
+    const drinkInfo = {
+      ...this.state.drinkInfo,
       [e.target.name]: e.target.value,
+    };
+    this.setState({
+      drinkInfo,
     });
   };
 
@@ -251,8 +264,9 @@ class App extends Component {
     });
   };
 
-  handleCocktailSelect = (cocktail) => {
-    this.setState({ selectedCocktail: cocktail });
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.handleAddDrink(this.state.drinkInfo);
   };
 
   handleAddToQueue = (drink) => {
@@ -267,8 +281,8 @@ class App extends Component {
 
   handleAddDrink = async (drinkIngredients) => {
     console.log(`DRINK WILL BE ${drinkIngredients}`);
+    drinkIngredients.user = userService.getUser();
     const newDrink = await drinkService.create(drinkIngredients);
-    console.log("NEW DRINK ", newDrink);
     this.setState((state) => ({
       drinks: [...state.drinks, newDrink],
     }));
@@ -279,6 +293,16 @@ class App extends Component {
     this.setState((state) => ({
       drinks: state.drinks.filter((d) => d._id !== id),
     }));
+  };
+
+  handleCocktailSelect = (e) => {
+    const drinkInfo = {
+      ...this.state.drinkInfo,
+      [e.target.name]: e.target.value,
+    };
+    this.setState({
+      drinkInfo,
+    });
   };
 
   componentDidMount = async () => {
@@ -300,12 +324,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          {" "}
-          <Link to="" className="Coastr-link">
-            Coastr
-          </Link>
-        </header>
         <Switch>
           <Route
             exact
@@ -323,20 +341,18 @@ class App extends Component {
             path="/drink"
             render={() => (
               <CreateDrinkPage
-                cocktails={this.state.cocktails}
-                spirits={this.state.spirits}
-                mixers={this.state.mixers}
-                liqueurs={this.state.liqueurs}
+                handleAddDrink={this.handleAddDrink}
+                user={this.state.user}
                 createdDrink={this.state.createdDrink}
-                selectedCreateOption={this.state.selectedCreateOption}
-                selectedCocktail={this.state.selectedCocktail}
+                drinkInfo={this.state.drinkInfo}
                 handleCocktailSelect={this.handleCocktailSelect}
                 handleCreateSelect={this.handleCreateSelect}
-                handleAddToQueue={this.handleAddToQueue}
-                handleNewDrinkClick={this.handleNewDrinkClick}
-                handleAddDrink={this.handleAddDrink}
-                handleLogout={this.handleLogout}
-                user={this.state.user}
+                handleSubmit={this.handleSubmit}
+                handleChange={this.handleChange}
+                cocktails={this.state.cocktails}
+                liqueurs={this.state.liqueurs}
+                mixers={this.state.mixers}
+                spirits={this.state.spirits}
               />
             )}
           />

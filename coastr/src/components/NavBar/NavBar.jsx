@@ -1,24 +1,75 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./NavBar.css";
 
 const NavBar = (props) => {
   let nav =
     props.user && props.user.email ? (
       <div>
-        <Link to="" className="NavBar-link" onClick={props.handleLogout}>
-          LOG OUT
-        </Link>
-        &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+        <header className="App-header">
+          {" "}
+          <Link
+            style={{ textDecoration: "none" }}
+            to=""
+            className="Coastr-link"
+          >
+            C
+          </Link>
+          <Link
+            style={{ textDecoration: "none" }}
+            to=""
+            className="NavBar-link"
+            onClick={props.handleLogout}
+          >
+            Log Out
+          </Link>
+          <NavLink
+            className="NavBar-link"
+            style={{ textDecoration: "none" }}
+            exact
+            to="/queue"
+          >
+            {" "}
+            View Queue
+          </NavLink>
+          <NavLink
+            className="NavBar-link"
+            style={{ textDecoration: "none" }}
+            exact
+            to="/drink"
+          >
+            Add Drink
+          </NavLink>
+        </header>
+        |&nbsp;&nbsp;&nbsp;
         <span className="NavBar-welcome">WELCOME, {props.user.name}</span>
       </div>
     ) : (
       <div>
-        <Link to="/login" className="NavBar-link">
+        <header className="App-header">
+          {" "}
+          <Link
+            style={{ textDecoration: "none" }}
+            to=""
+            className="Coastr-link"
+          >
+            Coastr
+          </Link>
+          <nav>
+            <NavLink className="NavBar-link" exact to="/queue">
+              {" "}
+              View Queue
+            </NavLink>
+            <NavLink className="NavBar-link" exact to="/drink">
+              Add Drink
+            </NavLink>
+          </nav>
+        </header>
+        <Link className="NavBar-link" to="/login" className="NavBar-link">
           LOG IN
         </Link>
         &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-        <Link to="/signup" className="NavBar-link">
+        <Link className="NavBar-link" to="/signup" className="NavBar-link">
           SIGN UP
         </Link>
       </div>

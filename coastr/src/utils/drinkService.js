@@ -1,4 +1,5 @@
 import tokenService from "./tokenService";
+import userService from "./userService";
 
 const BASE_URL = "/api/drinks/";
 
@@ -13,7 +14,7 @@ function getAll() {
 }
 
 function create(drink) {
-  console.log(drink);
+  console.log("Adding Drink TO DB", drink);
   return fetch(BASE_URL, {
     method: "POST",
     headers: {
