@@ -22,7 +22,7 @@ app.use("/api/drinks", require("./routes/api/drinks"));
 app.use(require("./config/auth"));
 
 app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "build", 'index.html'));
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 // Configure to use port 3001 during dev to avoid collision with React's dev server

@@ -2,8 +2,6 @@ import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
 import "./HomePage.css";
 const HomePage = (props) => {
-  console.log(props.user);
-
   return (
     <div>
       <NavBar user={props.user} handleLogout={props.handleLogout} />

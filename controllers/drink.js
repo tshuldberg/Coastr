@@ -8,13 +8,13 @@ module.exports = {
 
 async function create(req, res) {
   const drink = await Drink.create(req.body);
+  console.log("IM HEREEEEE", drink);
   drink.save((err) => {
     if (err) console.log(err);
   });
   res.status(201).json(drink);
 }
 async function index(req, res) {
-  console.log("IM HEREEEEE")
   const drinks = await Drink.find({}).populate("user");
   res.status(200).json(drinks);
 }

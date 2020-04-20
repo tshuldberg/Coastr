@@ -272,7 +272,6 @@ class App extends Component {
   handleAddToQueue = (drink) => {
     this.setState((state) => {
       const queue = state.queue.concat(drink);
-      console.log(queue);
       return {
         queue,
       };
@@ -307,7 +306,6 @@ class App extends Component {
 
   componentDidMount = async () => {
     const drinks = await drinkService.getAll();
-    console.log(drinks);
     this.setState({
       drinks: drinks,
     });
