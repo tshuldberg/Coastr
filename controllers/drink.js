@@ -14,6 +14,7 @@ async function create(req, res) {
   res.status(201).json(drink);
 }
 async function index(req, res) {
+  console.log("IM HEREEEEE")
   const drinks = await Drink.find({}).populate("user");
   res.status(200).json(drinks);
 }
