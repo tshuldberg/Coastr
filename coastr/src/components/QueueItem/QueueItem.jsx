@@ -3,7 +3,6 @@ import Button from "react-bootstrap/Button";
 import "./QueueItem.css";
 
 const QueueItem = (props) => {
-  console.log("PROPS.USER", props.user);
   let liqueur = props.drink.liqueur ? (
     <div>
       {props.drink.liqueurquantity} | {props.drink.liqueur}
@@ -27,35 +26,63 @@ const QueueItem = (props) => {
   ) : (
     <div> No Mixer </div>
   );
-  let logged = props.user ? (
+  let cocktail = props.drink.cocktail ? (
     <div>
-      <Button
-        variant="warning"
-        onClick={() => props.handleDeleteDrink(props.drink._id)}
-      >
-        Remove From Queue
-      </Button>{" "}
+      {props.drink.user[0].name}
+      <div>{props.drink.cocktail}</div>
     </div>
   ) : (
-    <input type="hidden" />
-  );
-
-  let cocktail = props.drink.cocktail ? (
-    <div>{props.drink.cocktail}</div>
-  ) : (
     <div>
+      {" "}
+      {props.drink.user[0].name}
       <div>{spirit}</div>
       <div>{mixer}</div>
       <div>{liqueur}</div>
     </div>
   );
-
-  return (
-    <div className="drink-item">
-      <div>{cocktail}</div>
-      <div>{logged}</div>
-    </div>
-  );
+  if (props.user.email === "tshuldberg999@gmail.com") {
+    let logged = (
+      <div>
+        <Button
+          variant="warning"
+          onClick={() => props.handleDeleteDrink(props.drink._id)}
+        >
+          Remove From Queue
+        </Button>{" "}
+      </div>
+    );
+    return (
+      <div className="drink-item">
+        <div>{cocktail}</div>
+        <div>{logged}</div>
+      </div>
+    );
+  } else if (props.user) {
+    let logged =
+      props.user._id === props.drink.user[0]._id ? (
+        <div>
+          <Button
+            variant="warning"
+            onClick={() => props.handleDeleteDrink(props.drink._id)}
+          >
+            Remove From Queue
+          </Button>{" "}
+        </div>
+      ) : (
+        <input type="hidden" />
+      );
+    return (
+      <div className="drink-item">
+        <div>{cocktail}</div>
+        <div>{logged}</div>
+      </div>
+    );
+  } else
+    return (
+      <div className="drink-item">
+        <div>{cocktail}</div>
+      </div>
+    );
 };
 
 export default QueueItem;

@@ -8,6 +8,8 @@ import "./HomePage.css";
 import QueueList from "../../components/QueueList/QueueList";
 const HomePage = (props) => {
   console.log(props.user);
+  // let isUser = drink.user === props.user ? () : ()
+
   return (
     <div>
       <NavBar user={props.user} handleLogout={props.handleLogout} />
@@ -16,15 +18,7 @@ const HomePage = (props) => {
           C O A S T R
           <div className="queue">
             <div className="QueueList">
-              <div className="drink-list">
-                {props.drinks.map((drink) => (
-                  <QueueItem
-                    drink={drink}
-                    handleDeleteDrink={props.handleDeleteDrink}
-                    user={props.user}
-                  />
-                ))}
-              </div>
+              <div className="drink-list"></div>
             </div>
           </div>
         </div>

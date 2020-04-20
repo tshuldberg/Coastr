@@ -60,17 +60,29 @@ const NavBar = (props) => {
             to=""
             className="Coastr-link"
           >
-            Coastr
+            C
           </Link>
-          <nav>
-            <NavLink className="NavBar-link" exact to="/queue">
+          <div className="topnav-right">
+            &nbsp;&nbsp;&nbsp;
+            <NavLink
+              className="NavBar-link"
+              style={{ textDecoration: "none" }}
+              exact
+              to="/queue"
+            >
               {" "}
               View Queue
             </NavLink>
-            <NavLink className="NavBar-link" exact to="/drink">
+            &nbsp;&nbsp;&nbsp;
+            <NavLink
+              className="NavBar-link"
+              style={{ textDecoration: "none" }}
+              exact
+              to="/drink"
+            >
               Add Drink
             </NavLink>
-          </nav>
+          </div>
         </header>
         <Link className="NavBar-link" to="/login" className="NavBar-link">
           LOG IN

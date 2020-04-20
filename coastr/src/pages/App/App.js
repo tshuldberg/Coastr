@@ -307,6 +307,7 @@ class App extends Component {
 
   componentDidMount = async () => {
     const drinks = await drinkService.getAll();
+    console.log(drinks);
     this.setState({
       drinks: drinks,
     });
