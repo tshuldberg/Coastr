@@ -1,14 +1,8 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
-import QueueItem from "../../components/QueueItem/QueueItem";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
 import NavBar from "../../components/NavBar/NavBar";
 import "./HomePage.css";
-import QueueList from "../../components/QueueList/QueueList";
 const HomePage = (props) => {
   console.log(props.user);
-  // let isUser = drink.user === props.user ? () : ()
 
   return (
     <div>

@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
 import "./CreateDrinkPage.css";
 
