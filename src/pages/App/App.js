@@ -267,9 +267,11 @@ class App extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.handleAddDrink(this.state.drinkInfo);
+    console.log("HANDLE SUBMIT", this.state.drinkInfo);
   };
 
   handleAddToQueue = (drink) => {
+    console.log("ADDING THIS DRINK: ", drink);
     this.setState((state) => {
       const queue = state.queue.concat(drink);
       return {
@@ -279,7 +281,7 @@ class App extends Component {
   };
 
   handleAddDrink = async (drinkIngredients) => {
-    console.log(`DRINK WILL BE ${drinkIngredients}`);
+    console.log("ADDING THIS DRINK: ", drinkIngredients);
     drinkIngredients.user = userService.getUser();
     const newDrink = await drinkService.create(drinkIngredients);
     this.setState((state) => ({
@@ -311,6 +313,17 @@ class App extends Component {
     });
   };
 
+  componentDidUpdate = async () => {
+    this.state.drinks.map(async (drink) => {
+      if (typeof drink === "undefined") {
+        const drinks = await drinkService.getAll();
+        this.setState({
+          drinks: drinks,
+        });
+      }
+    });
+  };
+
   handleLogout = () => {
     userService.logout();
     this.setState({ user: null });
@@ -327,20 +340,21 @@ class App extends Component {
           <Route
             exact
             path="/"
-            render={() => (
+            render={({ history }) => (
               <HomePage
                 handleNewDrinkClick={this.handleNewDrinkClick}
                 handleLogout={this.handleLogout}
                 drinks={this.state.drinks}
                 user={this.state.user}
                 handleDeleteDrink={this.handleDeleteDrink}
+                history={history}
               />
             )}
           />
           <Route
             exact
             path="/drink"
-            render={() => (
+            render={({ history }) => (
               <CreateDrinkPage
                 handleAddDrink={this.handleAddDrink}
                 user={this.state.user}
@@ -354,13 +368,14 @@ class App extends Component {
                 liqueurs={this.state.liqueurs}
                 mixers={this.state.mixers}
                 spirits={this.state.spirits}
+                history={history}
               />
             )}
           />
           <Route
             exact
             path="/queue"
-            render={() => (
+            render={({ history }) => (
               <QueuePage
                 queue={this.state.queue}
                 drinks={this.state.drinks}
@@ -368,6 +383,7 @@ class App extends Component {
                 handleNewDrinkClick={this.handleNewDrinkClick}
                 handleLogout={this.handleLogout}
                 user={this.state.user}
+                history={history}
               />
             )}
           />

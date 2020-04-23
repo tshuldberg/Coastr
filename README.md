@@ -6,7 +6,7 @@ Coastr is an app built to help improve the efficiency of high capacity bars. All
 
 ![DrinkQueue](/queue.png)
 
-This app is designed using the full MERN stack. As well as JWT Token Based Authentication.
+This app is designed using the full MERN stack. As well as JWT Token Based Authentication. - MongoDB - Express - React - Node.js
 
 Here is [Coastr](https://coastr-app.herokuapp.com/) hosted on Heroku.
 

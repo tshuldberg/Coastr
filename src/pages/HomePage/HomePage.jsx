@@ -6,7 +6,7 @@ const HomePage = (props) => {
     <div>
       <NavBar user={props.user} handleLogout={props.handleLogout} />
       <div className="home-ctr">
-        <div class="container">
+        <div className="container">
           C O A S T R
           <div className="queue">
             <div className="QueueList">
