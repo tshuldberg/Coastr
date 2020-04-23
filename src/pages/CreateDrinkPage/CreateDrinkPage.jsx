@@ -31,7 +31,7 @@ const CreateDrinkPage = (props) => {
       className="pour"
       type="submit"
       variant="warning"
-      to=""
+      href="/"
       // onClick={() => props.handleAddDrink(props.selectedCocktail)}
     >
       Pour That Shit Bartender
@@ -41,7 +41,7 @@ const CreateDrinkPage = (props) => {
       className="pour"
       type="submit"
       variant="warning"
-      to=""
+      href="/"
       // onClick={() => props.handleAddDrink(props.createdDrink)}
     >
       Pour That Shit Bartender
